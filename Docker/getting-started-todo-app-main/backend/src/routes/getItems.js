@@ -1,11 +1,6 @@
-const GREETINGS = [
-    "Whalecome!",
-    "All hands on deck!",
-    "Charting the course ahead!",
-];
+const db = require('../persistence');
 
 module.exports = async (req, res) => {
-    res.send({
-        greeting: GREETINGS[ Math.floor( Math.random() * GREETINGS.length )],
-    });
+    const items = await db.getItems();
+    res.send(items);
 };
